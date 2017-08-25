@@ -1,0 +1,44 @@
+So the first thing you need is to have all the pre-requisites installed
+
+1) MySQL --> https://dev.mysql.com/downloads/mysql/
+
+You will need to register an account with Oracle if you do not have one already. When you install the software be sure to include the
+Worbench and Python connector as well as MySQL - other additions are up to you but we need those for the course
+
+You can at this point create the necessary user and database we will be using (see section 3) or just do it at step 3
+
+2) PyCharm --> https://www.jetbrains.com/pycharm/download/#section=windows
+
+Download the Community version as this is free. Install it, doh.
+
+3) You will need to add the test database and test user we will make use of in the lessons (if you have not done so at step 1)
+
+So, open the MySQL shell, you should see:
+
+mysql-js>
+
+Here, the first thing to do is to add the psudo-user we will need to do is connect to the localhopst database, like so
+
+mysql-js> \connect root@localhost
+
+Then enter your root password at the prompt
+
+Now we create the new user:
+
+mysql-js> \sql
+mysql-sql> CREATE USER 'test_user'@'localhost' IDENTIFIED BY ' password';
+mysql-sql> GRANT ALL PRIVILEGES ON * . * TO 'test_user'@'localhost';
+mysql-sql> FLUSH PRIVILEGES;
+
+
+That's it - we now have a user named test_user with the password password on the localhost instance of MySQL. Next we can create the test 
+database (ensure your command prompt still shows mysql-sql>)
+
+mysql-sql> CREATE DATABASE test_db;
+
+If this works, you have done it. You may get an error saying "database exists", well that one is obvious (it already exists). You may get
+one saying "Access denies for user 'user details'" this means you need to log in as the root or other user with cretaion privileges (you
+should not suffer this issue if you have followed along with this tutorial)
+
+So - you are now ready, you should have the MySQL database installed, the Python connector installed, PyCharm installed and the new user
+and database created.
